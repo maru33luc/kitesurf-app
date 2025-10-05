@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { Navbar } from '../../../shared/navbar/navbar';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,7 +12,8 @@ import { RouterLink } from '@angular/router';
     CommonModule,
     MatCardModule,
     MatIconModule,
-    RouterLink
+    RouterLink,
+    Navbar
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'

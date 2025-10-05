@@ -5,6 +5,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { Navbar } from '../../../shared/navbar/navbar';
 
 @Component({
   selector: 'app-admin-bookings',
@@ -15,7 +16,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    Navbar
   ],
   templateUrl: './bookings.html',
   styleUrl: './bookings.css'

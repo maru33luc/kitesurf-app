@@ -1,5 +1,11 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d2b5b 0%, #1e3c72 100%);
+}
+
 .bookings-container {
-  padding: 20px;
+  padding: 90px 20px 20px; /* top padding for sticky navbar */
 }
 
 mat-table {
