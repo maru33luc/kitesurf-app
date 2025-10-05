@@ -1,0 +1,87 @@
+<div class="landing-container">
+  <nav class="navbar">
+    <div class="logo">KiteSurf School</div>
+    <div class="nav-links">
+      <a routerLink="/auth/login" class="nav-link">Login</a>
+      <a routerLink="/booking" class="nav-link primary">Reservar Clase</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Descubre la Libertad del KiteSurf</h1>
+      <p class="hero-subtitle">Clases personalizadas para todos los niveles</p>
+      <div class="cta-buttons">
+        <a routerLink="/booking" class="cta-button primary">
+          Reserva tu Clase
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
+        <a href="#learn-more" class="cta-button secondary">
+          Conoce Más
+          <mat-icon>expand_more</mat-icon>
+        </a>
+      </div>
+    </div>
+    <div class="hero-waves"></div>
+  </header>
+
+  <section class="features" id="learn-more">
+    <div class="feature-card">
+      <mat-icon class="feature-icon">group</mat-icon>
+      <h3>Instructores Expertos</h3>
+      <p>Aprende con profesionales certificados y apasionados</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon class="feature-icon">event</mat-icon>
+      <h3>Reservas Flexibles</h3>
+      <p>Elige el horario que mejor se adapte a ti</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon class="feature-icon">security</mat-icon>
+      <h3>Equipo de Calidad</h3>
+      <p>Material moderno y seguro para tu aprendizaje</p>
+    </div>
+  </section>
+
+  <section class="levels">
+    <h2>Niveles y Cursos</h2>
+    <div class="level-cards">
+      <div class="level-card beginner">
+        <h3>Principiante</h3>
+        <ul>
+          <li>Fundamentos básicos</li>
+          <li>Seguridad en el agua</li>
+          <li>Control del kite</li>
+        </ul>
+        <a routerLink="/booking" [queryParams]="{level: 'beginner'}" class="level-cta">
+          Empezar
+          <mat-icon>chevron_right</mat-icon>
+        </a>
+      </div>
+      <div class="level-card intermediate">
+        <h3>Intermedio</h3>
+        <ul>
+          <li>Técnicas de navegación</li>
+          <li>Control de velocidad</li>
+          <li>Primeros saltos</li>
+        </ul>
+        <a routerLink="/booking" [queryParams]="{level: 'intermediate'}" class="level-cta">
+          Mejorar
+          <mat-icon>chevron_right</mat-icon>
+        </a>
+      </div>
+      <div class="level-card advanced">
+        <h3>Avanzado</h3>
+        <ul>
+          <li>Trucos avanzados</li>
+          <li>Freestyle</li>
+          <li>Competición</li>
+        </ul>
+        <a routerLink="/booking" [queryParams]="{level: 'advanced'}" class="level-cta">
+          Perfeccionar
+          <mat-icon>chevron_right</mat-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

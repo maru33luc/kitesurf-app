@@ -1,0 +1,46 @@
+.bookings-container {
+  padding: 20px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+.mat-column-actions {
+  width: 120px;
+  text-align: center;
+}
+
+.mat-column-id {
+  width: 80px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.pending {
+  background-color: #ffd740;
+  color: #000;
+}
+
+.status-badge.approved {
+  background-color: #69f0ae;
+  color: #000;
+}
+
+.status-badge.cancelled {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.mat-cell {
+  padding: 8px;
+}
+
+mat-paginator {
+  margin-top: 20px;
+}

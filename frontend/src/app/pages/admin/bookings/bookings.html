@@ -1,0 +1,64 @@
+<div class="bookings-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSource">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let booking">{{booking.id}}</mat-cell>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+      <mat-cell *matCellDef="let booking">{{booking.date | date:'dd/MM/yyyy'}}</mat-cell>
+    </ng-container>
+
+    <!-- Time Column -->
+    <ng-container matColumnDef="time">
+      <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+      <mat-cell *matCellDef="let booking">{{booking.time}}</mat-cell>
+    </ng-container>
+
+    <!-- Student Name Column -->
+    <ng-container matColumnDef="studentName">
+      <mat-header-cell *matHeaderCellDef>Estudiante</mat-header-cell>
+      <mat-cell *matCellDef="let booking">{{booking.studentName}}</mat-cell>
+    </ng-container>
+
+    <!-- Level Column -->
+    <ng-container matColumnDef="level">
+      <mat-header-cell *matHeaderCellDef>Nivel</mat-header-cell>
+      <mat-cell *matCellDef="let booking">{{booking.level}}</mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+      <mat-cell *matCellDef="let booking">
+        <span [class]="'status-badge ' + booking.status.toLowerCase()">
+          {{booking.status}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let booking">
+        <button mat-icon-button color="primary" (click)="viewDetails(booking.id)" matTooltip="Ver detalles">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="approveBooking(booking.id)" matTooltip="Aprobar" *ngIf="booking.status === 'PENDING'">
+          <mat-icon>check_circle</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="cancelBooking(booking.id)" matTooltip="Cancelar">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
