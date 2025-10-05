@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "migrate": "psql \"%DATABASE_URL%\" -f sql/schema.sql",
+    "migrate": "set -a && source .env && psql \"$DATABASE_URL\" -f sql/schema.sql"
+,
     "smoke": "node scripts/smoke.js",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down"

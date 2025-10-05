@@ -28,10 +28,15 @@ This is a full-stack booking system for a kitesurf school, consisting of:
    docker compose up -d
    ```
 
-3. Run database migrations:
+3. Run the database schema to create tables:
 
    ```bash
+   docker exec -i <nombre_contenedor> psql -U postgres -d kitesurfdb -f /docker-entrypoint-initdb.d/schema.sql
+   # Replace <nombre_contenedor> with your actual container name
+   # You can find the container name using `docker ps`
+   # Alternatively, you can run the migration script:
    npm run migrate
+
    ```
 
 4. Install dependencies:
