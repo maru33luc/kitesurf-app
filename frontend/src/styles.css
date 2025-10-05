@@ -1,4 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: var(--mat-sys-on-surface);
+  position: relative;
+}
+
+/* Full-screen background image with subtle overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(180deg, rgba(10, 23, 44, 0.55), rgba(10, 23, 44, 0.35)),
+    image-set(
+      url('/assets/hero/sea-waves-large.jpg') 2x,
+      url('/assets/hero/sea-waves.jpg') 1x,
+      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2060&auto=format&fit=crop') 1x
+    );
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* Utility: glass effect for panels on image backgrounds */
+.glass {
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Rounded, soft UI across Material components */
+.mat-mdc-card {
+  border-radius: var(--app-radius-lg, 16px) !important;
+  box-shadow: var(--app-shadow-sm, 0 6px 18px rgba(0,0,0,0.12));
+}
+
+.mat-mdc-raised-button, .mat-mdc-outlined-button, .mat-mdc-unelevated-button, .mat-mdc-stroked-button {
+  border-radius: 999px !important;
+  text-transform: none !important;
+  font-weight: 700 !important;
+}
+
+.mat-mdc-form-field .mdc-text-field {
+  border-radius: var(--app-radius-md, 12px) !important;
+}
+
+.mat-mdc-menu-panel {
+  border-radius: var(--app-radius-md, 12px) !important;
+  box-shadow: var(--app-shadow-sm, 0 6px 18px rgba(0,0,0,0.12));
+}
+
+.mat-mdc-snack-bar-container {
+  border-radius: var(--app-radius-md, 12px) !important;
+}
+
+/* Links on dark overlays */
+a { color: #00b4db; }
+a:hover { opacity: 0.9; }
+
+/* Typography: headings adventurous Montserrat, body clean Inter */
+h1, h2, h3, h4, h5, h6 { font-family: Montserrat, Roboto, "Helvetica Neue", sans-serif; letter-spacing: 0.2px; }
+body { font-family: Inter, Roboto, "Helvetica Neue", sans-serif; }
+
+/* Dark mode adjustments */
+[data-theme="dark"] body::before {
+  background-image:
+    linear-gradient(180deg, rgba(6, 14, 28, 0.7), rgba(6, 14, 28, 0.55)),
+    image-set(
+      url('/assets/hero/sea-waves-large.jpg') 2x,
+      url('/assets/hero/sea-waves.jpg') 1x,
+      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2060&auto=format&fit=crop') 1x
+    );
+}
