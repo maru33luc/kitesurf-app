@@ -1,0 +1,43 @@
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s, opacity .18s;
+  will-change: transform;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ui-btn.primary {
+  color: #fff;
+  background: linear-gradient(120deg, #12C2E9, #7F5AF0);
+  box-shadow: 0 10px 25px rgba(127,90,240,0.25);
+}
+.ui-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(127,90,240,0.35);
+}
+
+.ui-btn.secondary {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+}
+.ui-btn.secondary:hover { transform: translateY(-3px); }
+
+.ui-btn.tertiary { color: #12C2E9; background: transparent; }
+.ui-btn.tertiary:hover { opacity: .9; }
+
+.ui-btn.disabled, .ui-btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
