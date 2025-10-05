@@ -1,12 +1,11 @@
-import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   MatRipple,
   MatRippleModule,
   _StructuralStylesLoader
-} from "./chunk-KPDWCOZW.js";
+} from "./chunk-GVSYMIFF.js";
 import {
   _animationsDisabled
-} from "./chunk-DPQBCGNG.js";
+} from "./chunk-PXY2VYUU.js";
 import {
   ENTER,
   MatCommonModule,
@@ -14,10 +13,10 @@ import {
   _IdGenerator,
   _VisuallyHiddenLoader,
   hasModifierKey
-} from "./chunk-KIEYPZBB.js";
+} from "./chunk-I5MJWXPQ.js";
 import {
   _CdkPrivateStyleLoader
-} from "./chunk-NKR63ERL.js";
+} from "./chunk-2KLOV7VD.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -60,13 +59,10 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-EIXVH7E3.js";
+} from "./chunk-BLUVHALM.js";
 import {
-  require_cjs
-} from "./chunk-WGRCPX6P.js";
-import {
-  __toESM
-} from "./chunk-YHCV7DAQ.js";
+  Subject
+} from "./chunk-RSS3ODKE.js";
 
 // node_modules/@angular/material/fesm2022/pseudo-checkbox.mjs
 var MatPseudoCheckbox = class _MatPseudoCheckbox {
@@ -141,8 +137,31 @@ var MatPseudoCheckbox = class _MatPseudoCheckbox {
   });
 })();
 
+// node_modules/@angular/material/fesm2022/pseudo-checkbox-module.mjs
+var MatPseudoCheckboxModule = class _MatPseudoCheckboxModule {
+  static ɵfac = function MatPseudoCheckboxModule_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _MatPseudoCheckboxModule)();
+  };
+  static ɵmod = ɵɵdefineNgModule({
+    type: _MatPseudoCheckboxModule,
+    imports: [MatCommonModule, MatPseudoCheckbox],
+    exports: [MatPseudoCheckbox]
+  });
+  static ɵinj = ɵɵdefineInjector({
+    imports: [MatCommonModule]
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatPseudoCheckboxModule, [{
+    type: NgModule,
+    args: [{
+      imports: [MatCommonModule, MatPseudoCheckbox],
+      exports: [MatPseudoCheckbox]
+    }]
+  }], null, null);
+})();
+
 // node_modules/@angular/material/fesm2022/option.mjs
-var import_rxjs = __toESM(require_cjs(), 1);
 var _c0 = ["*", [["mat-option"], ["ng-container"]]];
 var _c1 = ["*", "mat-option, ng-container"];
 var _c2 = ["text"];
@@ -332,7 +351,7 @@ var MatOption = class _MatOption {
   /** Element containing the option's text. */
   _text;
   /** Emits when the state of the option changes and any parents have to be notified. */
-  _stateChanges = new import_rxjs.Subject();
+  _stateChanges = new Subject();
   constructor() {
     const styleLoader = inject(_CdkPrivateStyleLoader);
     styleLoader.load(_StructuralStylesLoader);
@@ -643,30 +662,6 @@ function _getOptionScrollPosition(optionOffset, optionHeight, currentScrollPosit
   return currentScrollPosition;
 }
 
-// node_modules/@angular/material/fesm2022/pseudo-checkbox-module.mjs
-var MatPseudoCheckboxModule = class _MatPseudoCheckboxModule {
-  static ɵfac = function MatPseudoCheckboxModule_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _MatPseudoCheckboxModule)();
-  };
-  static ɵmod = ɵɵdefineNgModule({
-    type: _MatPseudoCheckboxModule,
-    imports: [MatCommonModule, MatPseudoCheckbox],
-    exports: [MatPseudoCheckbox]
-  });
-  static ɵinj = ɵɵdefineInjector({
-    imports: [MatCommonModule]
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatPseudoCheckboxModule, [{
-    type: NgModule,
-    args: [{
-      imports: [MatCommonModule, MatPseudoCheckbox],
-      exports: [MatPseudoCheckbox]
-    }]
-  }], null, null);
-})();
-
 // node_modules/@angular/material/fesm2022/option-module.mjs
 var MatOptionModule = class _MatOptionModule {
   static ɵfac = function MatOptionModule_Factory(__ngFactoryType__) {
@@ -693,6 +688,7 @@ var MatOptionModule = class _MatOptionModule {
 
 export {
   MatPseudoCheckbox,
+  MatPseudoCheckboxModule,
   MAT_OPTION_PARENT_COMPONENT,
   MAT_OPTGROUP,
   MatOptgroup,
@@ -700,7 +696,6 @@ export {
   MatOption,
   _countGroupLabelsBeforeOption,
   _getOptionScrollPosition,
-  MatPseudoCheckboxModule,
   MatOptionModule
 };
-//# sourceMappingURL=chunk-4JLT6RWR.js.map
+//# sourceMappingURL=chunk-CBTMGEZS.js.map

@@ -1,11 +1,12 @@
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   MatRipple,
   MatRippleModule,
   _StructuralStylesLoader
-} from "./chunk-7JNCADJ5.js";
+} from "./chunk-KPDWCOZW.js";
 import {
   _animationsDisabled
-} from "./chunk-6SG24TC6.js";
+} from "./chunk-DPQBCGNG.js";
 import {
   ENTER,
   MatCommonModule,
@@ -13,10 +14,10 @@ import {
   _IdGenerator,
   _VisuallyHiddenLoader,
   hasModifierKey
-} from "./chunk-QM5LB5FL.js";
+} from "./chunk-KIEYPZBB.js";
 import {
   _CdkPrivateStyleLoader
-} from "./chunk-2KLOV7VD.js";
+} from "./chunk-NKR63ERL.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -59,10 +60,13 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-BLUVHALM.js";
+} from "./chunk-EIXVH7E3.js";
 import {
-  Subject
-} from "./chunk-RSS3ODKE.js";
+  require_cjs
+} from "./chunk-WGRCPX6P.js";
+import {
+  __toESM
+} from "./chunk-YHCV7DAQ.js";
 
 // node_modules/@angular/material/fesm2022/pseudo-checkbox.mjs
 var MatPseudoCheckbox = class _MatPseudoCheckbox {
@@ -162,6 +166,7 @@ var MatPseudoCheckboxModule = class _MatPseudoCheckboxModule {
 })();
 
 // node_modules/@angular/material/fesm2022/option.mjs
+var import_rxjs = __toESM(require_cjs(), 1);
 var _c0 = ["*", [["mat-option"], ["ng-container"]]];
 var _c1 = ["*", "mat-option, ng-container"];
 var _c2 = ["text"];
@@ -351,7 +356,7 @@ var MatOption = class _MatOption {
   /** Element containing the option's text. */
   _text;
   /** Emits when the state of the option changes and any parents have to be notified. */
-  _stateChanges = new Subject();
+  _stateChanges = new import_rxjs.Subject();
   constructor() {
     const styleLoader = inject(_CdkPrivateStyleLoader);
     styleLoader.load(_StructuralStylesLoader);
@@ -698,4 +703,4 @@ export {
   _getOptionScrollPosition,
   MatOptionModule
 };
-//# sourceMappingURL=chunk-BLWCWVB7.js.map
+//# sourceMappingURL=chunk-DDGMH75N.js.map

@@ -3,13 +3,13 @@ import {
   createFlexibleConnectedPositionStrategy,
   createOverlayRef,
   createRepositionScrollStrategy
-} from "./chunk-53CHPHSM.js";
+} from "./chunk-KKMGSRCW.js";
 import {
   ScrollDispatcher
-} from "./chunk-PKITTLXH.js";
+} from "./chunk-RCMY6YBQ.js";
 import {
   _animationsDisabled
-} from "./chunk-6SG24TC6.js";
+} from "./chunk-PXY2VYUU.js";
 import {
   coerceBooleanProperty
 } from "./chunk-GWFLKVBH.js";
@@ -19,14 +19,14 @@ import {
   FocusMonitor,
   hasModifierKey,
   normalizePassiveListenerOptions
-} from "./chunk-QM5LB5FL.js";
-import {
-  Directionality
-} from "./chunk-V32IFUNM.js";
+} from "./chunk-I5MJWXPQ.js";
 import {
   Platform,
   coerceNumberProperty
-} from "./chunk-V7JLJIV3.js";
+} from "./chunk-M2XRRWPQ.js";
+import {
+  Directionality
+} from "./chunk-V32IFUNM.js";
 import {
   NgClass
 } from "./chunk-7LDN4K4Q.js";
@@ -109,7 +109,6 @@ var MAT_TOOLTIP_DEFAULT_OPTIONS = new InjectionToken("mat-tooltip-default-option
   providedIn: "root",
   factory: MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY
 });
-var TOOLTIP_PANEL_CLASS = "mat-mdc-tooltip-panel";
 var PANEL_CLASS = "tooltip-panel";
 var passiveListenerOptions = normalizePassiveListenerOptions({
   passive: true
@@ -1005,15 +1004,8 @@ var TooltipComponent = class _TooltipComponent {
 })();
 
 export {
-  SCROLL_THROTTLE_MS,
-  getMatTooltipInvalidPositionError,
-  MAT_TOOLTIP_SCROLL_STRATEGY,
-  MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY,
   MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER,
-  MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY,
-  MAT_TOOLTIP_DEFAULT_OPTIONS,
-  TOOLTIP_PANEL_CLASS,
   MatTooltip,
   TooltipComponent
 };
-//# sourceMappingURL=chunk-W6YBV6B3.js.map
+//# sourceMappingURL=chunk-RRS3IMD7.js.map

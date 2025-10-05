@@ -1,19 +1,49 @@
 :host {
   display: block;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0d2b5b 0%, #1e3c72 100%);
+  background: 
+    radial-gradient(ellipse at top, rgba(127, 90, 240, 0.1), transparent),
+    radial-gradient(ellipse at bottom, rgba(18, 194, 233, 0.1), transparent),
+    linear-gradient(135deg, #0B1020 0%, #0E1528 100%);
+  position: relative;
+}
+
+:host::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop') center/cover;
+  opacity: 0.04;
+  pointer-events: none;
 }
 
 .bookings-container {
-  padding: 90px 20px 20px; /* top padding for sticky navbar */
+  padding: 100px 2rem 2rem;
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 mat-table {
   width: 100%;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.mat-mdc-header-row {
+  background: rgba(18, 194, 233, 0.1) !important;
+}
+
+.mat-mdc-row:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 .mat-column-actions {
-  width: 120px;
+  width: 140px;
   text-align: center;
 }
 
@@ -22,31 +52,48 @@ mat-table {
 }
 
 .status-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
 }
 
 .status-badge.pending {
-  background-color: #ffd740;
+  background: linear-gradient(135deg, #ffd740, #ffc400);
   color: #000;
+  box-shadow: 0 2px 8px rgba(255, 215, 64, 0.3);
 }
 
 .status-badge.approved {
-  background-color: #69f0ae;
-  color: #000;
+  background: var(--grad-accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(52, 211, 153, 0.3);
 }
 
 .status-badge.cancelled {
-  background-color: #f44336;
+  background: var(--grad-sunset);
   color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 62, 129, 0.3);
 }
 
-.mat-cell {
-  padding: 8px;
+.mat-mdc-cell {
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.mat-mdc-header-cell {
+  color: #fff !important;
+  font-weight: 700 !important;
 }
 
 mat-paginator {
-  margin-top: 20px;
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.9) !important;
 }

@@ -113,7 +113,6 @@ var MAT_TOOLTIP_DEFAULT_OPTIONS = new InjectionToken("mat-tooltip-default-option
   providedIn: "root",
   factory: MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY
 });
-var TOOLTIP_PANEL_CLASS = "mat-mdc-tooltip-panel";
 var PANEL_CLASS = "tooltip-panel";
 var passiveListenerOptions = normalizePassiveListenerOptions({
   passive: true
@@ -1009,15 +1008,8 @@ var TooltipComponent = class _TooltipComponent {
 })();
 
 export {
-  SCROLL_THROTTLE_MS,
-  getMatTooltipInvalidPositionError,
-  MAT_TOOLTIP_SCROLL_STRATEGY,
-  MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY,
   MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER,
-  MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY,
-  MAT_TOOLTIP_DEFAULT_OPTIONS,
-  TOOLTIP_PANEL_CLASS,
   MatTooltip,
   TooltipComponent
 };
-//# sourceMappingURL=chunk-ZNIQ6E6Y.js.map
+//# sourceMappingURL=chunk-3MV7AP3V.js.map

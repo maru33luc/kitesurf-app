@@ -112,13 +112,92 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* Dark mode adjustments */
-[data-theme="dark"] body::before {
-  background-image:
-    linear-gradient(180deg, rgba(6, 14, 28, 0.7), rgba(6, 14, 28, 0.55)),
-    image-set(
-      url('/assets/hero/sea-waves-large.jpg') 2x,
-      url('/assets/hero/sea-waves.jpg') 1x,
-      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2060&auto=format&fit=crop') 1x
-    );
+/* Material Component Overrides for Modern Theme */
+.mat-mdc-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.mat-mdc-card-title {
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
+.mat-mdc-card-subtitle {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Form fields with glass effect */
+.mat-mdc-form-field {
+  --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08) !important;
+  --mdc-filled-text-field-label-text-color: rgba(255, 255, 255, 0.7) !important;
+  --mdc-filled-text-field-input-text-color: #fff !important;
+  --mdc-filled-text-field-hover-label-text-color: rgba(255, 255, 255, 0.9) !important;
+  --mdc-filled-text-field-focus-label-text-color: var(--ocean-1) !important;
+  --mdc-filled-text-field-active-indicator-color: rgba(255, 255, 255, 0.3) !important;
+  --mdc-filled-text-field-hover-active-indicator-color: rgba(255, 255, 255, 0.5) !important;
+  --mdc-filled-text-field-focus-active-indicator-color: var(--ocean-1) !important;
+}
+
+.mat-mdc-form-field .mdc-text-field {
+  backdrop-filter: blur(8px);
+}
+
+/* Buttons with gradient */
+.mat-mdc-raised-button.mat-primary {
+  background: var(--grad-ocean) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(18, 194, 233, 0.3) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  box-shadow: 0 8px 25px rgba(18, 194, 233, 0.5) !important;
+}
+
+.mat-mdc-raised-button.mat-accent {
+  background: var(--grad-accent) !important;
+  color: #fff !important;
+}
+
+.mat-mdc-raised-button.mat-warn {
+  background: var(--grad-sunset) !important;
+  color: #fff !important;
+}
+
+/* Datepicker with modern styling */
+.mat-datepicker-content {
+  background: rgba(11, 16, 32, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-float) !important;
+}
+
+.mat-calendar {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+.mat-calendar-body-selected {
+  background: var(--ocean-1) !important;
+  color: #fff !important;
+}
+
+/* Select dropdown */
+.mat-mdc-select-panel {
+  background: rgba(11, 16, 32, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px);
+}
+
+.mat-mdc-option {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.mat-mdc-option:hover {
+  background: rgba(18, 194, 233, 0.15) !important;
+}
+
+.mat-mdc-option.mat-mdc-option-active {
+  background: rgba(18, 194, 233, 0.2) !important;
 }

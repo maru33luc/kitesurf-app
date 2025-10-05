@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Navbar } from '../../../shared/navbar/navbar';
 
 @Component({
   selector: 'app-admin-calendar',
@@ -9,9 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    Navbar
   ],
   template: `
+    <app-navbar></app-navbar>
     <div class="calendar-container">
       <h2>Calendario de Clases</h2>
       <div class="calendar-navigation">
@@ -29,27 +32,70 @@ import { MatIconModule } from '@angular/material/icon';
     </div>
   `,
   styles: [`
+    :host {
+      display: block;
+      min-height: 100vh;
+      background: 
+        radial-gradient(ellipse at top, rgba(127, 90, 240, 0.1), transparent),
+        radial-gradient(ellipse at bottom, rgba(18, 194, 233, 0.1), transparent),
+        linear-gradient(135deg, #0B1020 0%, #0E1528 100%);
+      position: relative;
+    }
+
+    :host::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop') center/cover;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+
     .calendar-container {
-      padding: 20px;
+      padding: 100px 2rem 2rem;
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #fff, var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2.5rem;
     }
 
     .calendar-navigation {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(12px);
     }
 
-    h2 {
-      margin-bottom: 20px;
+    .calendar-navigation h3 {
+      color: #fff;
+      font-size: 1.5rem;
+      margin: 0;
+      text-transform: capitalize;
     }
 
     .calendar-grid {
-      min-height: 400px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 20px;
+      min-height: 500px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
     }
   `]
 })
