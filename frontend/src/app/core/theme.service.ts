@@ -7,7 +7,9 @@ export class ThemeService {
   private readonly STORAGE_KEY = 'app_theme';
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    const saved = localStorage.getItem(this.STORAGE_KEY) as 'light' | 'dark' | null;
+    const saved = (typeof localStorage !== 'undefined'
+      ? (localStorage.getItem(this.STORAGE_KEY) as 'light' | 'dark' | null)
+      : null);
     if (saved) this.setTheme(saved);
   }
 
@@ -19,7 +21,9 @@ export class ThemeService {
 
   setTheme(theme: 'light' | 'dark') {
     this.document.documentElement.setAttribute(this.ATTR, theme);
-    localStorage.setItem(this.STORAGE_KEY, theme);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(this.STORAGE_KEY, theme);
+    }
   }
 
   getTheme(): 'light' | 'dark' {

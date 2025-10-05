@@ -16,15 +16,17 @@ export class AuthService {
   readonly user$ = this._user$.asObservable();
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.TOKEN_KEY);
+    return typeof localStorage !== 'undefined' && !!localStorage.getItem(this.TOKEN_KEY);
   }
 
   login(username: string, password: string): Observable<AuthUser> {
     // TODO: Replace with real API call
     const fakeToken = 'demo-token';
     const user: AuthUser = { id: 1, username, role: username === 'admin' ? 'admin' : 'student' };
-    localStorage.setItem(this.TOKEN_KEY, fakeToken);
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(this.TOKEN_KEY, fakeToken);
+      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    }
     this._user$.next(user);
     return of(user);
   }
@@ -35,8 +37,10 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    localStorage.removeItem(this.USER_KEY);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem(this.TOKEN_KEY);
+      localStorage.removeItem(this.USER_KEY);
+    }
     this._user$.next(null);
   }
 
@@ -46,10 +50,11 @@ export class AuthService {
 
   private getStoredUser(): AuthUser | null {
     try {
-      const raw = localStorage.getItem(this.USER_KEY);
+      const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(this.USER_KEY) : null;
       return raw ? JSON.parse(raw) as AuthUser : null;
     } catch {
       return null;
     }
   }
 }
+
