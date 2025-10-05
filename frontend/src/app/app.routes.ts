@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
 import { AdminDashboardComponent } from './pages/admin/dashboard/dashboard';
 import { AdminBookingsComponent } from './pages/admin/bookings/bookings';
+import { authGuard } from './core/auth/auth.guard';
 
 export const routes: Routes = [
   { 
     path: 'admin',
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: AdminDashboardComponent },
@@ -28,5 +30,12 @@ export const routes: Routes = [
   { 
     path: 'booking',
     loadComponent: () => import('./pages/booking/booking').then(m => m.BookingComponent)
+  },
+  {
+    path: 'auth',
+    children: [
+      { path: 'login', loadComponent: () => import('./pages/auth/login/login').then(m => m.LoginComponent) },
+      { path: 'register', loadComponent: () => import('./pages/auth/register/register').then(m => m.RegisterComponent) }
+    ]
   }
 ];

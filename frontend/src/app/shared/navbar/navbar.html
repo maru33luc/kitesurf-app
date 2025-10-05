@@ -1,1 +1,17 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <div class="nav-left">
+    <a routerLink="/landing" class="brand">
+      <span class="logo-mark">🪁</span>
+      <span class="brand-text">KiteSurf School</span>
+    </a>
+  </div>
+  <div class="nav-center">
+    <a routerLink="/landing" class="link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
+    <a routerLink="/booking" class="link" routerLinkActive="active">Reservar</a>
+    <a routerLink="/admin" class="link" routerLinkActive="active">Admin</a>
+  </div>
+  <div class="nav-right">
+    <a routerLink="/auth/login" class="btn ghost">Entrar</a>
+    <a routerLink="/auth/register" class="btn primary">Crear cuenta</a>
+  </div>
+</nav>

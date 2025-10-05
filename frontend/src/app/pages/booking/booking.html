@@ -1,1 +1,59 @@
-<p>booking works!</p>
+<div class="booking-container">
+  <mat-card class="booking-card">
+    <mat-card-header>
+      <mat-card-title>Reserva tu clase</mat-card-title>
+      <mat-card-subtitle>Completa tus datos y te confirmamos por email</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="booking-form">
+        <div class="form-grid">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre completo</mat-label>
+            <input matInput formControlName="fullName" placeholder="Tu nombre" />
+            <mat-error *ngIf="form.get('fullName')?.hasError('required')">Requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="tucorreo@ejemplo.com" />
+            <mat-error *ngIf="form.get('email')?.hasError('email')">Email inválido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Hora</mat-label>
+            <input matInput formControlName="time" placeholder="HH:MM" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Nivel</mat-label>
+            <mat-select formControlName="level">
+              <mat-option *ngFor="let lvl of levels" [value]="lvl.value">{{lvl.label}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Instructor</mat-label>
+            <mat-select formControlName="instructorId">
+              <mat-option *ngFor="let ins of instructors" [value]="ins.id">{{ins.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="notes" appearance="fill">
+            <mat-label>Notas</mat-label>
+            <textarea matInput rows="3" formControlName="notes" placeholder="Preferencias, lesiones, etc."></textarea>
+          </mat-form-field>
+        </div>
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit">Enviar reserva</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

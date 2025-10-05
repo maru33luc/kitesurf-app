@@ -1,0 +1,1 @@
+.auth-container{min-height:100vh;background:linear-gradient(135deg,#0d2b5b,#1e3c72);display:flex;justify-content:center;align-items:center;padding:2rem}.auth-card{width:100%;max-width:480px}.auth-form{display:grid;gap:1rem}.actions{display:flex;justify-content:flex-end;margin-top:.5rem}.link{text-decoration:none;color:#00b4db}

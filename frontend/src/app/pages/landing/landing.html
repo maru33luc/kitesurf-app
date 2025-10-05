@@ -1,11 +1,5 @@
 <div class="landing-container">
-  <nav class="navbar">
-    <div class="logo">KiteSurf School</div>
-    <div class="nav-links">
-      <a routerLink="/auth/login" class="nav-link">Login</a>
-      <a routerLink="/booking" class="nav-link primary">Reservar Clase</a>
-    </div>
-  </nav>
+  <app-navbar></app-navbar>
 
   <header class="hero">
     <div class="hero-content">
@@ -84,4 +78,79 @@
       </div>
     </div>
   </section>
+
+  <section class="testimonials">
+    <h2>Lo que dicen nuestros alumnos</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <p>“Experiencia inolvidable. En 3 clases ya estaba navegando.”</p>
+        <span class="author">— Sofía, Principiante</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“Profesionales, pacientes y súper divertidos.”</p>
+        <span class="author">— Lucas, Intermedio</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“Me ayudaron a pulir mis trucos y ganar confianza.”</p>
+        <span class="author">— Martín, Avanzado</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Planes y Precios</h2>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <h3>Clase Individual</h3>
+        <div class="price">US$ 60</div>
+        <ul>
+          <li>1 hora</li>
+          <li>Equipo incluido</li>
+          <li>Seguro básico</li>
+        </ul>
+        <a routerLink="/booking" class="btn-purchase">Reservar</a>
+      </div>
+      <div class="price-card highlight">
+        <h3>Pack 4 Clases</h3>
+        <div class="price">US$ 220</div>
+        <ul>
+          <li>4 x 1 hora</li>
+          <li>Equipo incluido</li>
+          <li>Progreso guiado</li>
+        </ul>
+        <a routerLink="/booking" class="btn-purchase">Empezar</a>
+      </div>
+      <div class="price-card">
+        <h3>Clase Avanzada</h3>
+        <div class="price">US$ 80</div>
+        <ul>
+          <li>1 hora</li>
+          <li>Coach avanzado</li>
+          <li>Video análisis</li>
+        </ul>
+        <a routerLink="/booking" class="btn-purchase">Reservar</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">🪁 KiteSurf School</div>
+        <p>Vive el mar, el viento y la libertad.</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <a routerLink="/landing">Inicio</a>
+        <a routerLink="/booking">Reservas</a>
+        <a routerLink="/auth/login">Acceder</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>info@kitesurf.school</p>
+        <p>Playa Central, Ciudad del Mar</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© {{ currentYear }} KiteSurf School</div>
+  </footer>
 </div>
