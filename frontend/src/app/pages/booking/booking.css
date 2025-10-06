@@ -4,11 +4,12 @@
     radial-gradient(ellipse at top, rgba(127, 90, 240, 0.12), transparent),
     radial-gradient(ellipse at bottom, rgba(18, 194, 233, 0.12), transparent),
     linear-gradient(135deg, #0B1020 0%, #0E1528 100%);
-  padding: 6rem 1rem 3rem;
+  padding: 2rem 1rem 3rem;
   color: #fff;
   display: flex;
   justify-content: center;
   position: relative;
+  align-items: flex-start;
 }
 
 .booking-container::before {
@@ -50,7 +51,7 @@
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .form-grid .notes {
@@ -58,7 +59,7 @@
 }
 
 .actions {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;

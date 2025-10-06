@@ -6,7 +6,7 @@
     linear-gradient(135deg, #0B1020 0%, #0E1528 100%);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem;
   position: relative;
 }

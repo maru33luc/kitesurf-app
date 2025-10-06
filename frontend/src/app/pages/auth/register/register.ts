@@ -41,8 +41,15 @@ export class RegisterComponent {
     
     this.loading = true;
     const { name, email, phone, password } = this.form.getRawValue() as any;
+
+    let role = 'student';
+
+    if (name === 'admin') {
+      role = 'admin';
+    }
+
     
-    this.auth.register(name, email, phone || '', password, 'student').subscribe({
+    this.auth.register(name, email, phone || '', password, role).subscribe({
       next: () => {
         this.snackBar.open('¡Cuenta creada exitosamente!', 'Cerrar', { duration: 3000 });
         this.router.navigate(['/booking']);
@@ -55,3 +62,4 @@ export class RegisterComponent {
     });
   }
 }
+
