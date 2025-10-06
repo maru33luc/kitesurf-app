@@ -43,7 +43,14 @@ export class LoginComponent {
     this.auth.login(email, password).subscribe({
       next: () => {
         this.snackBar.open('¡Bienvenido!', 'Cerrar', { duration: 2000 });
-        this.router.navigate(['/admin']);
+        // this.router.navigate(['/admin']);
+        if (this.auth.isAdmin()) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/booking']);
+        }
+
+        
       },
       error: (err) => {
         this.loading = false;

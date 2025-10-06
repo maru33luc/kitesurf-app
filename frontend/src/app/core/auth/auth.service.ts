@@ -128,5 +128,10 @@ export class AuthService {
       return null;
     }
   }
+
+  isAdmin(): boolean {
+    const user = this.getUser();
+    return user?.role === 'admin';
+  }
 }
 
