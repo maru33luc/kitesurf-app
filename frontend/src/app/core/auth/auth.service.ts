@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap, catchError, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface AuthUser {
   id: number;
@@ -22,10 +23,11 @@ interface RegisterResponse {
 }
 
 @Injectable({ providedIn: 'root' })
+
 export class AuthService {
   private readonly TOKEN_KEY = 'auth_token';
   private readonly USER_KEY = 'auth_user';
-  private readonly API_URL = 'http://localhost:3000/api/auth';
+  private readonly API_URL = environment.apiBaseUrl + '/auth';
   private _user$ = new BehaviorSubject<AuthUser | null>(this.getStoredUser());
 
   readonly user$ = this._user$.asObservable();

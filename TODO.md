@@ -1,0 +1,4 @@
+- [x] Create frontend/src/environments/environment.ts with apiBaseUrl for development
+- [x] Create frontend/src/environments/environment.prod.ts with apiBaseUrl for production (placeholder)
+- [x] Update frontend/src/app/core/auth/auth.service.ts to use environment.apiBaseUrl
+- [x] Update frontend/src/app/core/services/booking.service.ts to use environment.apiBaseUrl
