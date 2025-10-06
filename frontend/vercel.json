@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "framework": "@vercel/angular",
+  "builds": [
+    {
+      "src": "angular.json",
+      "use": "@vercel/angular"
+    }
+  ]
+}
