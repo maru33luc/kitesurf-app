@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "framework": "@vercel/angular",
   "builds": [
     {
-      "src": "angular.json",
-      "use": "@vercel/angular"
+      "src": "dist/frontend/server/server.mjs",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/frontend/server/server.mjs"
     }
   ]
 }
