@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://your-production-backend.com/api'
+  apiBaseUrl: 'https://kitesurf-app.onrender.com/api'
 };
