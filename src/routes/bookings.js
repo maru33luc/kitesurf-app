@@ -3,11 +3,11 @@ const router = express.Router();
 const ctrl = require('../controllers/bookings');
 const auth = require('../middleware/auth');
 
-// Create student (register)
-router.post('/students', ctrl.createStudent);
-
-// List sessions
+// List sessions (public)
 router.get('/sessions', ctrl.listSessions);
+
+// List instructors (public)
+router.get('/instructors', ctrl.listInstructors);
 
 // Create a booking (prevents overbooking) - requires auth
 router.post('/', auth(), ctrl.createBooking);

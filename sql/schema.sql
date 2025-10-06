@@ -8,18 +8,15 @@ CREATE TABLE IF NOT EXISTS instructors (
   phone TEXT
 );
 
-CREATE TABLE IF NOT EXISTS students (
-  id SERIAL PRIMARY KEY,
-  name TEXT NOT NULL,
-  email TEXT UNIQUE,
-  phone TEXT
-);
-
+-- Unified users table (replaces both users and students)
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
-  username TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  phone TEXT,
   password_hash TEXT NOT NULL,
-  role TEXT NOT NULL DEFAULT 'staff'
+  role TEXT NOT NULL DEFAULT 'student',
+  created_at timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS equipment (
@@ -39,15 +36,15 @@ CREATE TABLE IF NOT EXISTS sessions (
   level TEXT
 );
 
--- bookings reference a session and a student; ensure unique student per session
+-- bookings reference a session and a user; ensure unique user per session
 CREATE TABLE IF NOT EXISTS bookings (
   id SERIAL PRIMARY KEY,
   session_id int REFERENCES sessions(id) ON DELETE CASCADE,
-  student_id int REFERENCES students(id) ON DELETE CASCADE,
+  user_id int REFERENCES users(id) ON DELETE CASCADE,
   equipment_id int REFERENCES equipment(id),
   status TEXT NOT NULL DEFAULT 'confirmed',
   created_at timestamptz NOT NULL DEFAULT now(),
-  UNIQUE(session_id, student_id)
+  UNIQUE(session_id, user_id)
 );
 
 -- Index to quickly check session occupancy

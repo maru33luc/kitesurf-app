@@ -1,27 +1,23 @@
 const db = require('../db');
 const nodemailer = require('nodemailer');
 
-async function createStudent(req, res) {
-  const { name, email, phone } = req.body;
-  if (!name) return res.status(400).json({ error: 'name required' });
-  try {
-    const { rows } = await db.query('INSERT INTO students(name,email,phone) VALUES($1,$2,$3) RETURNING *', [name, email, phone]);
-    res.json(rows[0]);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'db error' });
-  }
-}
-
 async function listSessions(req, res) {
   const { rows } = await db.query('SELECT s.*, i.name as instructor_name, (SELECT count(*) FROM bookings b WHERE b.session_id = s.id) as booked FROM sessions s LEFT JOIN instructors i ON s.instructor_id = i.id WHERE s.start >= now() ORDER BY s.start');
   res.json(rows);
 }
 
-// Booking payload: { student_id, session_id, equipment_id }
+async function listInstructors(req, res) {
+  const { rows } = await db.query('SELECT id, name FROM instructors ORDER BY name');
+  res.json(rows);
+}
+
+// Booking payload: { user_id, session_id, equipment_id }
+// user_id comes from authenticated user (req.user.id)
 async function createBooking(req, res) {
-  const { student_id, session_id, equipment_id } = req.body;
-  if (!student_id || !session_id) return res.status(400).json({ error: 'student_id and session_id required' });
+  const { session_id, equipment_id } = req.body;
+  const user_id = req.user.id; // From auth middleware
+  
+  if (!session_id) return res.status(400).json({ error: 'session_id required' });
 
   const client = await db.getClient();
   try {
@@ -42,21 +38,21 @@ async function createBooking(req, res) {
       return res.status(409).json({ error: 'session full' });
     }
 
-    // Prevent duplicate booking for same student & session (unique constraint also helps)
-    const existing = await client.query('SELECT * FROM bookings WHERE session_id = $1 AND student_id = $2', [session_id, student_id]);
+    // Prevent duplicate booking for same user & session (unique constraint also helps)
+    const existing = await client.query('SELECT * FROM bookings WHERE session_id = $1 AND user_id = $2', [session_id, user_id]);
     if (existing.rowCount > 0) {
       await client.query('ROLLBACK');
-      return res.status(409).json({ error: 'student already booked this session' });
+      return res.status(409).json({ error: 'you already booked this session' });
     }
 
-    const insert = await client.query('INSERT INTO bookings(session_id, student_id, equipment_id) VALUES($1,$2,$3) RETURNING *', [session_id, student_id, equipment_id]);
+    const insert = await client.query('INSERT INTO bookings(session_id, user_id, equipment_id) VALUES($1,$2,$3) RETURNING *', [session_id, user_id, equipment_id]);
 
     await client.query('COMMIT');
 
     const booking = insert.rows[0];
 
     // Send confirmation (email stub)
-    sendConfirmationEmail(student_id, booking).catch(err => console.error('confirmation error', err));
+    sendConfirmationEmail(user_id, booking).catch(err => console.error('confirmation error', err));
 
     res.status(201).json(booking);
   } catch (err) {
@@ -68,11 +64,11 @@ async function createBooking(req, res) {
   }
 }
 
-async function sendConfirmationEmail(student_id, booking) {
+async function sendConfirmationEmail(user_id, booking) {
   // basic lookup
-  const { rows } = await db.query('SELECT * FROM students WHERE id = $1', [student_id]);
+  const { rows } = await db.query('SELECT * FROM users WHERE id = $1', [user_id]);
   if (!rows[0]) return;
-  const student = rows[0];
+  const user = rows[0];
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -85,11 +81,11 @@ async function sendConfirmationEmail(student_id, booking) {
 
   const info = await transporter.sendMail({
     from: process.env.SMTP_USER,
-    to: student.email,
+    to: user.email,
     subject: 'Kitesurf booking confirmation',
-    text: `Your booking is confirmed: session ${booking.session_id}`
+    text: `Hi ${user.name}, your booking is confirmed: session ${booking.session_id}`
   });
   console.log('confirmation sent', info && info.messageId);
 }
 
-module.exports = { createStudent, listSessions, createBooking };
+module.exports = { listSessions, listInstructors, createBooking };

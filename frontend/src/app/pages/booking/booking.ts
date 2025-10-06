@@ -8,8 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Navbar } from '../../shared/navbar/navbar';
+import { BookingService } from '../../core/services/booking.service';
 
 @Component({
   selector: 'app-booking',
@@ -23,6 +25,7 @@ import { Navbar } from '../../shared/navbar/navbar';
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     Navbar
   ],
@@ -36,18 +39,21 @@ export class BookingComponent implements OnInit {
     { value: 'intermediate', label: 'Intermedio' },
     { value: 'advanced', label: 'Avanzado' }
   ];
-  instructors = [
-    { id: 1, name: 'Ana' },
-    { id: 2, name: 'Marcos' },
-    { id: 3, name: 'Lucía' }
-  ];
+  instructors: any[] = [];
   timeSlots = [
     '08:00', '09:00', '10:00', '11:00', '12:00',
     '13:00', '14:00', '15:00', '16:00', '17:00',
     '18:00', '19:00', '20:00'
   ];
+  loading = false;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private bookingService: BookingService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     const levelFromQuery = this.route.snapshot.queryParamMap.get('level');
@@ -60,6 +66,21 @@ export class BookingComponent implements OnInit {
       instructorId: [null, Validators.required],
       notes: ['']
     });
+
+    // Load instructors from database
+    this.loadInstructors();
+  }
+
+  loadInstructors() {
+    this.bookingService.getInstructors().subscribe({
+      next: (instructors) => {
+        this.instructors = instructors;
+      },
+      error: (err) => {
+        console.error('Error loading instructors:', err);
+        this.snackBar.open('Error al cargar instructores', 'Cerrar', { duration: 3000 });
+      }
+    });
   }
 
   submit() {
@@ -67,8 +88,34 @@ export class BookingComponent implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
-    // TODO: Call booking service once backend is ready
-    console.log('Booking request', this.form.value);
-    alert('¡Reserva enviada! Te contactaremos para confirmar.');
+
+    this.loading = true;
+    const formData = this.form.value;
+
+    // Create booking (requires authentication)
+    this.bookingService.createBooking({
+      session_id: 1, // TODO: Get from selected session
+      equipment_id: undefined
+    }).subscribe({
+      next: (booking) => {
+        this.snackBar.open('¡Reserva confirmada! Te enviamos un email.', 'Cerrar', { 
+          duration: 5000 
+        });
+        this.loading = false;
+        setTimeout(() => this.router.navigate(['/landing']), 2000);
+      },
+      error: (err) => {
+        console.error('Error creating booking:', err);
+        const message = err.error?.error || 'Error al crear la reserva. Debes estar logueado.';
+        this.snackBar.open(message, 'Cerrar', { 
+          duration: 5000 
+        });
+        this.loading = false;
+        // Redirect to login if not authenticated
+        if (err.status === 401) {
+          setTimeout(() => this.router.navigate(['/auth/login']), 2000);
+        }
+      }
+    });
   }
 }
