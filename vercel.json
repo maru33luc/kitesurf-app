@@ -1,10 +1,16 @@
 {
   "version": 2,
+  "buildCommand": "ng build",
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
+    {
+      "src": "dist/frontend/server/server.mjs",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "server.js" }
+    {
+      "src": "/(.*)",
+      "dest": "dist/frontend/server/server.mjs"
+    }
   ]
 }
-
