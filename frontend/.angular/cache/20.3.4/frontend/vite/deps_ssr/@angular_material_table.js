@@ -2,6 +2,7 @@ import { createRequire } from 'module';const require = createRequire(import.meta
 import {
   _DisposeViewRepeaterStrategy
 } from "./chunk-ZPEYNMN7.js";
+import "./chunk-WMCF36ZG.js";
 import {
   DataSource,
   ScrollingModule,
@@ -11,7 +12,6 @@ import {
   _ViewRepeaterOperation,
   isDataSource
 } from "./chunk-O76V2CMN.js";
-import "./chunk-WMCF36ZG.js";
 import "./chunk-4NRDWZRV.js";
 import {
   MatCommonModule

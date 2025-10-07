@@ -11,7 +11,24 @@
     <a routerLink="/admin" class="link" routerLinkActive="active">Admin</a>
   </div>
   <div class="nav-right">
-    <a routerLink="/auth/login" class="btn ghost">Entrar</a>
-    <a routerLink="/auth/register" class="btn primary">Crear cuenta</a>
+    <a routerLink="/auth/login" class="btn ghost desktop-only">Logueate</a>
+    <a routerLink="/auth/register" class="btn primary desktop-only">Registrate</a>
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen" title="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu" [class.open]="isMenuOpen">
+  <div class="mobile-menu-content">
+    <a routerLink="/landing" class="mobile-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Inicio</a>
+    <a routerLink="/booking" class="mobile-link" routerLinkActive="active" (click)="closeMenu()">Reservar</a>
+    <a routerLink="/admin" class="mobile-link" routerLinkActive="active" (click)="closeMenu()">Admin</a>
+    <div class="mobile-buttons">
+      <a routerLink="/auth/login" class="btn ghost" (click)="closeMenu()">Entrar</a>
+      <a routerLink="/auth/register" class="btn primary" (click)="closeMenu()">Crear cuenta</a>
+    </div>
+  </div>
+</div>

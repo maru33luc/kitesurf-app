@@ -2,3 +2,5 @@
 - [x] Update frontend/package.json build:ssr script
 - [ ] Push code to GitHub
 - [ ] Connect repo to Vercel and deploy
+- [x] Make landing page responsive for all devices
+- [x] Add hamburger menu to navbar

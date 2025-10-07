@@ -12,14 +12,14 @@ import {
   createBlockScrollStrategy,
   createGlobalPositionStrategy,
   createOverlayRef
-} from "./chunk-5R2ZH5MG.js";
-import {
-  CdkScrollable
-} from "./chunk-O76V2CMN.js";
+} from "./chunk-B522JBZW.js";
 import {
   _animationsDisabled
 } from "./chunk-CHH7UAZ4.js";
 import "./chunk-WMCF36ZG.js";
+import {
+  CdkScrollable
+} from "./chunk-O76V2CMN.js";
 import "./chunk-4NRDWZRV.js";
 import {
   A11yModule,
