@@ -1,6 +1,8 @@
-- [x] Update frontend/vercel.json to add buildCommand
-- [x] Update frontend/package.json build:ssr script
-- [ ] Push code to GitHub
-- [ ] Connect repo to Vercel and deploy
-- [x] Make landing page responsive for all devices
-- [x] Add hamburger menu to navbar
+- [x] Update Project Overview to mention authentication and user roles
+- [x] Add a dedicated Authentication section explaining JWT, roles, and login/register
+- [x] Enhance Backend Features to include authentication, email notifications, and user roles
+- [x] Enhance Frontend Features to include authentication, calendar view, and responsive design details
+- [x] Expand Environment Variables to include JWT_SECRET and other auth-related vars
+- [x] Update API Endpoints with more details and auth-protected routes
+- [x] Add a Deployment section for Vercel (frontend) and general backend deployment
+- [x] Revise Next Steps to reflect current status and add new items like testing, monitoring
